@@ -6,7 +6,14 @@ from io import BytesIO
 
 load_dotenv() 
 
-def fetch_images(query, num_results=5):
+def is_valid_image(url):
+    try:
+        response = requests.head(url, allow_redirects=True)  # Use HEAD request to check if the image exists
+        return response.status_code == 200 and "image" in response.headers["Content-Type"]
+    except requests.RequestException:
+        return False
+
+def fetch_images(query, num_results=10):
     search_url = f"https://www.googleapis.com/customsearch/v1"
     params = {
         "q": query,
@@ -19,12 +26,23 @@ def fetch_images(query, num_results=5):
     response = requests.get(search_url, params=params)
     search_results = response.json()
 
-    image_urls = []
+    valid_image_url = None
     if "items" in search_results:
         for item in search_results["items"]:
-            image_urls.append(item["link"])
+            image_url = item["link"]
+            # Check if the image URL is valid
+            if is_valid_image(image_url):
+                valid_image_url = image_url
+                break  # Stop at the first valid image
 
-    return image_urls
+    return valid_image_url
+
+    # image_urls = []
+    # if "items" in search_results:
+    #     for item in search_results["items"]:
+    #         image_urls.append(item["link"])
+
+    # return image_urls
 
 def download_and_resize_images(image_urls, target_size=(1080, 1920), folder="downloaded_images"):
     if not os.path.exists(folder):
