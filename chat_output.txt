@@ -1,1 +1,2 @@
-["Introduction to Binary Search", "Comparing Target Value to Middle Element", "Eliminating Half of Array Based on Comparison", "Continuing Search Iteratively Until Target Found", "Determination of Target Presence in Array"]
+["Introduction to Binary Search", "Comparison and Elimination in Binary Search", "Target Value Identification in Binary Search"]
+["Algorithm for locating values in sorted arrays using binary search method", "Comparison of target value with array middle for elimination in binary search", "Continued search process and target value identification in binary search"]
