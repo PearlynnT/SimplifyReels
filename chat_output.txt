@@ -1,0 +1,1 @@
+["Introduction to Binary Search", "Comparing Target Value to Middle Element", "Eliminating Half of Array Based on Comparison", "Continuing Search Iteratively Until Target Found", "Determination of Target Presence in Array"]
