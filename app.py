@@ -12,6 +12,56 @@ st.title("Simplify Reels")
 # </style>"""
 
 # st.markdown(page_bg_img, unsafe_allow_html=True)
+def local_css():
+    st.markdown("""
+    <style>
+    /* Background */
+    [data-testid="stAppViewContainer"] {
+        background-color: #3E2723; /* Dark Brown */
+        color: #F5F5F5; /* Light Gray for text */
+    }
+
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #4E342E; /* Slightly lighter brown */
+    }
+
+    /* Title */
+    h1 {
+        color: #FF6F00; /* Orange */
+        font-family: 'Cinzel', serif; /* Western-style font */
+        text-align: center;
+        text-shadow: 2px 2px #000000;
+    }
+
+    /* Chat Input */
+    .css-1r6slb0 {
+        background-color: #5D4037; /* Brown */
+        color: #F5F5F5;
+    }
+
+    /* Buttons */
+    .css-1emrehy.edgvbvh3 {
+        background-color: #BF360C; /* Deep Orange */
+        color: #FFF3E0;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-family: 'Cinzel', serif;
+        box-shadow: 2px 2px #000000;
+    }
+                
+    /* Footer */
+    footer {
+        visibility: hidden;
+    }
+
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+    </style>
+    """, unsafe_allow_html=True)
+
+local_css()
 
 video_file = "output_video.mp4"
 
@@ -25,16 +75,5 @@ if prompt:
     with st.spinner("Generating your queries..."):  # Show loading spinner
         chat(prompt)  # Creates chat_output.txt
     with st.spinner("Generating your video..."):
-        while True:
-            if os.path.exists(video_file):
-                current_modified_time = os.path.getmtime(video_file)
-
-                # Check if the video file has stopped modifying
-                if current_modified_time != last_modified_time:
-                    last_modified_time = current_modified_time
-                    time.sleep(10) 
-                else:
-                    st.video(video_file)
-                    break  # Exit the loop after displaying the video
-            else:
-                time.sleep(10)  
+        time.sleep(100) 
+        st.video(video_file) 
