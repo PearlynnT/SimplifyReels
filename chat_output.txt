@@ -1,3 +1,0 @@
-["Introduction to Dynamic Programming", "Explanation of Dynamic Programming Principle", "Application of Dynamic Programming in Various Fields"]
-["Definition of dynamic programming method and algorithmic paradigm by Richard Bellman", "Examples of problem simplification through recursive sub-problems", "Significance of optimal substructure for problem solving in computer science"]
-["Overview of dynamic programming relationships and application in nested sub-problems", "Concept of Bellman equation in optimization literature"]
