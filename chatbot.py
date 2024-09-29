@@ -26,7 +26,7 @@ def chat(prompt):
         - Identify key moments or changes in the action of the text that can be considered "scenes."
         - Each scene should have a corresponding descriptive subtitle that summarizes the key action in a concise manner.
         - Limit the number of subtitles to a maximum of 6.
-        - Number of queries equals the number of subtitles.
+        - Number of queries MUST equal the number of subtitles.
 
     2. **Subtitle Formatting Guidelines**:
         - Each subtitle should be short (maximum 15 words) and summarize the key information or action of the scene.
