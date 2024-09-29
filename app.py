@@ -85,5 +85,5 @@ if prompt:
     with st.spinner("Generating your queries..."):  # Show loading spinner
         chat(prompt)  # Creates chat_output.txt
     with st.spinner("Generating your video..."):
-        time.sleep(100) 
+        time.sleep(60) 
         st.video(video_file) 
