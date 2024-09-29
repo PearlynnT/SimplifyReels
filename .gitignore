@@ -7,3 +7,4 @@ downloaded_images/
 generated_images/
 chat_output.txt
 output_video.mp4
+__pycache__/
