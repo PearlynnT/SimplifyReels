@@ -8,12 +8,24 @@ load_dotenv()
 
 def is_valid_image(url):
     try:
-        response = requests.head(url, allow_redirects=True)  # Use HEAD request to check if the image exists
-        return response.status_code == 200 and "image" in response.headers["Content-Type"]
+        # First, try using the HEAD request
+        response = requests.head(url, allow_redirects=True)
+        # Fallback to GET request if HEAD doesn't return necessary headers
+        if "Content-Type" not in response.headers:
+            response = requests.get(url, stream=True)  # stream=True to avoid downloading the entire image
+
+        # Safely check for the Content-Type header
+        content_type = response.headers.get("Content-Type", "")
+        return response.status_code == 200 and "image" in content_type
     except requests.RequestException:
         return False
+    # try:
+    #     response = requests.head(url, allow_redirects=True)  # Use HEAD request to check if the image exists
+    #     return response.status_code == 200 and "image" in response.headers["Content-Type"]
+    # except requests.RequestException:
+    #     return False
 
-def fetch_images(query, num_results=10):
+def fetch_images(query, num_results=20):
     search_url = f"https://www.googleapis.com/customsearch/v1"
     params = {
         "q": query,
@@ -25,6 +37,7 @@ def fetch_images(query, num_results=10):
 
     response = requests.get(search_url, params=params)
     search_results = response.json()
+    print(search_results)
 
     valid_image_url = None
     if "items" in search_results:
