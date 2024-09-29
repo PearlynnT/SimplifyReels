@@ -37,5 +37,5 @@ def generate_images_from_texts(texts, output_folder="generated_images"):
         output_path = os.path.join(output_folder, f"text_image_{idx + 1}.png")
         generate_image_with_text(text, output_path)
         generated_images.append(output_path)
-        # print(f"Generated image for: {text}")
+        print(f"Generated image for: {text}")
     return generated_images
