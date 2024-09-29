@@ -51,6 +51,10 @@ def local_css():
         box-shadow: 2px 2px #000000;
     }
                 
+    white-text {
+        color: white            
+    }
+                
     /* Footer */
     footer {
         visibility: hidden;
@@ -63,10 +67,16 @@ def local_css():
 
 local_css()
 
+# Add a greeting message
+if 'greeted' not in st.session_state:
+    with st.chat_message("🤠"):
+        st.write(f":orange[Howdy, partner! Tell me a story and I'll turn it into a video for you.]")
+    st.session_state['greeted'] = True
+
 video_file = "output_video.mp4"
 
 # Handle user input
-prompt = st.chat_input("Say something")
+prompt = st.chat_input("Once upon a time...")
 if prompt:
     # Remove the existing video file if it exists
     if os.path.exists(video_file):
