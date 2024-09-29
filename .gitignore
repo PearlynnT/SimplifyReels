@@ -3,3 +3,6 @@
 venv/
 requirements.txt
 .env
+downloaded_images/
+generated_images/
+output_video.mp4
